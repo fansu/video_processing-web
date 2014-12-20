@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content_header %}
+<script type="text/javascript">
+$(document).ready({
+  $(function getviews(){
+    $.ajax({
+        type: "POST",
+        url: "/search_func/",
+        data: $("#search").val(),
+        dataType: 'json',
+        cache:false,
+        success: function(data) {
+        } 
+     }); 
+     return false;
+  });  
+});
+</script>
+{% endblock %}
+
+{% block content_body %}
+<div class="center hero-unit">
+  <h1>Welcome to the Video Recommendation System</h1>
+
+<br></br><p></p>
+
+<form method="post">
+  <table border=0><tr>
+  {% csrf_token %}
+  <input type="text" style="width:200px;text-align:center;display:inline-block" class = "form-control" id="search" name="search" placeholder="Enter keywords"/>&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="submit" class="btn btn-default" onclick="getviews(this)" value="Search" />
+  </tr></table>
+
+<p>Please choose only one option. If there are multiple options chosen, only the first one is valid</p>
+<p></p><p></p>Sort by: &nbsp;&nbsp;
+<label class="checkbox-inline">
+{% csrf_token %}
+View Count <input type='checkbox' name="check_box_viewCount"/>
+</label>
+<label class="checkbox-inline">
+{% csrf_token %}
+Age <input type='checkbox' name="check_box_age"/>
+</label>
+<label class="checkbox-inline">
+{% csrf_token %}
+Trend Analysis <input type='checkbox' name="check_box_relevance"/>
+</label>
+</form>
+
+<p></p><p></p>
+
+<table align = "center" border='4'>
+<tr><th style="width:200px;text-align:center">snapshots</th>
+<th style="width:400px;text-align:center">video information</th></tr>
+</table>
+
+{% for q in videos %}  
+  <table align = "center" border='2'> 
+  <tr><td style="width:200px;height:200px;text-align:center" rowspan="4"><img src={{q.4}} width="200" height="200"> 
+      <td colspan="3" style="width:400px;text-align:center"><a href="https://www.youtube.com/watch?v={{q.0}}">{{q.1}}</a>
+  <tr><td colspan="3" style="width:400px;text-align:center">Published at {{q.2}}
+  <tr><td colspan="3" style="width:400px;text-align:center">The length of the video is {{q.8}}
+  <tr><td>View Count: {{q.5}}
+      <td>Like Count: {{q.6}}
+      <td>Dislike Count: {{q.7}}
+  <tr><tr>
+  </table>
+
+
+{% endfor %}
+<p></p><p></p>
+
+</div>
+{% endblock %}

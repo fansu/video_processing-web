@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content_header %}
+<script type="text/javascript">
+$(document).ready({
+  $(function getviews(){
+    $.ajax({
+        type: "POST",
+        url: "/search_func/",
+        data: $('#search').val(),
+        dataType: 'json',
+        cache:false,
+        success: function(data) {
+        } 
+     }); 
+     return false;
+  });  
+});
+</script>
+{% endblock %}
+
+{% block content_body %}
+<div class="center hero-unit">
+  <h1>Welcome to the Video Recommendation System</h1>
+  <h2>[This page is only for administrator to collect trend data]</h2>
+  <h2>Please submit your search keywords for trend data collection in the following box.</h2>
+
+<p></p><p></p>
+
+<form method="post">
+  <table border=0><tr>
+  {% csrf_token %}
+  <input type="text" style="width:200px;text-align:center;display:inline-block" class = "form-control" id="search" name="search" placeholder="Enter keywords"/>&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="submit" class="btn btn-default" onclick="getviews(this)" value="Search" />
+  </tr></table>
+</form>
+
+<p></p><p></p>
+<h2>{{complete_tag}}</h2>
+<p></p><p></p>
+
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Bootstrap core CSS -->
+<link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Documentation extras -->
+<link href="{{ STATIC_URL }}css/docs.min.css" rel="stylesheet">
+
+<!-- new CSS -->
+<link href="{{ STATIC_URL }}css/search_css.css" rel="stylesheet">
+
+{% block content_header %}
+
+{% endblock %}
+
+</head>
+
+<body>
+
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <a href="/search" id="logo">Video Recommendation System</a>
+      <nav>
+        <ul class="nav pull-right">
+          <a href="/search" class="navbar-brand" >Home</a>
+          <a href="/help" class="navbar-brand" >Help</a>
+          <a href="/about" class="navbar-brand" >About</a>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+{% block content_body %}
+
+{% endblock %}
+
+<footer class="footer">
+  <div class = "container">
+  <small>
+    <p>Video Recommendation System by Fan Su and Adeyemi Aladesawe. </p>
+    <p>Contact&nbsp;&nbsp;
+    Fan Su: <a href="mailto:fs2488@columbia.edu">fs2488@columbia.edu</a>&nbsp;&nbsp;
+    Adeyemi Omololu Aladesawe: <a href="mailto:aoa2124@columbia.edu">aoa2124@columbia.edu</a></p>
+  </small>
+  <nav>
+    <ul>
+      <li><a href="/search">Home</a></li>
+      <li><a href="/help">Help</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </nav>
+</footer>
+
+</body>
+</html>
